@@ -1,4 +1,4 @@
-[Мое, кст](maxivimax.ru.com)
+[Мое, кст](http://maxivimax.ru.com)
 
 ## Available Scripts
 
