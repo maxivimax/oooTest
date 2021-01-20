@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import List from './Todo/List'
-import Context from './context'
-import Loader from './Loader'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import List from './Yeee/List'
+import { MapContainer, TileLayer, Marker, Popup, LayersControl, Circle, LayerGroup, FeatureGroup, Rectangle } from 'react-leaflet'
 
 let a
 let b
+
+let g
 
 const styles = {
   mapCont: {
@@ -59,23 +59,24 @@ function toggle(id) {
     )
   }
 
-function fetch1h(yee){
-  if(yee == true){
-    fetch('https://httpbin.org/post',{
+function fetch1h(id){
+    g = fetch('https://httpbin.org/post',{
      method: 'POST',
-     body: "fdf",
+     body: {
+      'id': id,
+      'zipcode': 'application/json'
+    },
      headers: {
      'Authorization': 'very_secret_token',
      'Content-Type': 'application/json'
     }
    })
-     .then(function(response) {
+    .catch(error => {
+    alert(error); // Error: Not Found
+  });
+     console.log(g)
 
-         return response.json()
-       }).then(function(body) {
-         console.log(body);
-       });
-     }
+     
 }
 
   return (
@@ -86,9 +87,6 @@ function fetch1h(yee){
         ) : loading ? null : (
           <p>JSON in down.....</p>
         )}
-        <button onClick={fetch1h(true)} style={styles.butt} >
-          Нуу
-        </button>
       </div>
       <div style={styles.marg}>
         <h1>Карта(React Leaflet и Openstreetmap)</h1>
@@ -97,57 +95,100 @@ function fetch1h(yee){
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-
-          <Marker style={styles.ID1} position={[-37.3159, 81.1496]}>
+<LayersControl position="topright">
+      <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      </LayersControl.BaseLayer>
+      <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+        />
+      </LayersControl.BaseLayer>
+      <LayersControl.Overlay name="𝟏 | Leanne Graham">
+        <Marker position={[-37.3159, 81.1496]}>
             <Popup>
               Leanne Graham
             </Popup>
           </Marker>
-          <Marker style={styles.ID2} position={[-43.9509, -34.4618]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟐 | Ervin Howell">
+        <Marker position={[-43.9509, -34.4618]}>
             <Popup>
               Ervin Howell
             </Popup>
           </Marker>
-          <Marker style={styles.ID3} position={[-68.6102, -47.0653]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟑 | Clementine Bauch">
+          <Marker position={[-68.6102, -47.0653]}>
             <Popup>
               Clementine Bauch
             </Popup>
           </Marker>
-          <Marker style={styles.ID4} position={[29.4572, -164.2990]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟒 | Patricia Lebsack">
+          <Marker position={[29.4572, -164.2990]}>
             <Popup>
               Patricia Lebsack
             </Popup>
           </Marker>
-          <Marker style={styles.ID5} position={[-31.8129, 62.5342]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟓 | Chelsey Dietrich">
+          <Marker position={[-31.8129, 62.5342]}>
             <Popup>
               Chelsey Dietrich
             </Popup>
           </Marker>
-          <Marker style={styles.ID6} position={[-71.4197, 71.7478]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟔 | Mrs. Dennis Schulist">
+          <Marker position={[-71.4197, 71.7478]}>
             <Popup>
               Mrs. Dennis Schulist
             </Popup>
           </Marker>
-          <Marker style={styles.ID7} position={[24.8918, 21.8984]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟕 | Kurtis Weissnat">
+          <Marker position={[24.8918, 21.8984]}>
             <Popup>
               Kurtis Weissnat
             </Popup>
           </Marker>
-          <Marker style={styles.ID8} position={[-14.3990, -120.7677]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟖 | Nicholas Runolfsdottir V">
+          <Marker position={[-14.3990, -120.7677]}>
             <Popup>
               Nicholas Runolfsdottir V
             </Popup>
           </Marker>
-          <Marker style={styles.ID9} position={[24.6463, -168.8889]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟗 | Glenna Reichert">
+          <Marker position={[24.6463, -168.8889]}>
             <Popup>
               Glenna Reichert
             </Popup>
           </Marker>
-          <Marker style={styles.ID10} position={[-38.2386, 57.2232]}>
+      </LayersControl.Overlay>
+
+      <LayersControl.Overlay name="𝟏𝟎 | Clementina DuBuque">
+          <Marker position={[-38.2386, 57.2232]}>
             <Popup>
               Clementina DuBuque
             </Popup>
           </Marker>
+      </LayersControl.Overlay>
+
+    </LayersControl>
 
         </MapContainer>
       </div>
