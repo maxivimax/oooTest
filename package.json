@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://maxivimax.github.io/Yeeeee",
   "dependencies": {
+    "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
     "leaflet": "^1.7.1",
     "prop-types": "^15.7.2",

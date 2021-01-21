@@ -1,0 +1,16 @@
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+.custom-checkbox:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+.custom-checkbox:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.custom-checkbox:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+.custom-checkbox:disabled+label::before {
+  background-color: #e9ecef;
+}
